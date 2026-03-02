@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bg Color Changer</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        /* Color panel */
+        .panel {
+            background: #f2f2f2;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        /* Buttons */
+        button {
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+        }
+
+        /* Custom section spacing */
+        .custom-section {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Color Panel -->
+    <div class="panel" id="colorPanel">
+        <button style="background:red;">Red</button>
+        <button style="background:blue;">Blue</button>
+        <button style="background:green;">Green</button>
+        <button style="background:orange;">Orange</button>
+        <button style="background:violet;">Violet</button>
+    </div>
+
+    <!-- Custom Color Section -->
+    <div class="custom-section">
+        <input type="color" id="colorPicker">
+        <button id="addColorBtn" style="background:black;">Add Color</button>
+    </div>
+
+<script>
+    // Select the color panel
+    const panel = document.getElementById("colorPanel");
+
+    // Change background when any color button is clicked
+    panel.addEventListener("click", function(event) {
+        if (event.target.tagName === "BUTTON") {
+            const color = event.target.style.background;
+            document.body.style.backgroundColor = color;
+        }
+    });
+
+    // Add custom color button
+    const addColorBtn = document.getElementById("addColorBtn");
+
+    addColorBtn.addEventListener("click", function() {
+        const colorPicker = document.getElementById("colorPicker");
+        const selectedColor = colorPicker.value;
+
+        const newButton = document.createElement("button");
+        newButton.style.background = selectedColor;
+        newButton.textContent = selectedColor;
+
+        panel.appendChild(newButton);
+    });
+</script>
+
+</body>
+</html>
